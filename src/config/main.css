@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Variáveis globais */
+:root {
+  /* Paleta de Cores */
+  --dark-brown: #2B1D0E; /* Fundo principal (navbar, rodapé, fundo de telas) */
+  --gold: #D2A94C; /* Destaques, bordas de botões, ícones, links importantes */
+  --leaf-green: #3C5D3F; /* Detalhes sutis, hover, categorias de pratos, chips */
+  --light-beige: #F5E8D0; /* Fundos de cards, inputs, áreas internas de conteúdo */
+  --white: #FFFFFF; /* Textos principais, ícones claros, contraste */
+  --off-white: #F5F5F5; /* Alternativa para branco */
+  --soft-black: #1A1A1A; /* Textos secundários, placeholders, bordas finas */
+
+  /* Tipografia */
+  --font-family: 'Inter', sans-serif;
+  --font-family-poppins: 'Poppins', sans-serif;
+  --font-size-base: 16px;
+  --font-size-large: 1.25rem;
+  --font-size-small: 0.875rem;
+
+  /* Espaçamentos */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+
+  /* Bordas */
+  --border-radius: 4px;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--dark-brown);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-family);
+  background-color: var(--gold);
+  color: var(--dark-brown);
+  border: 1px solid var(--gold);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--leaf-green);
+}
+
+.card {
+  background-color: var(--light-beige);
+  border: 1px solid var(--soft-black);
+}
+
+.placeholder {
+  color: var(--soft-black);
+}
