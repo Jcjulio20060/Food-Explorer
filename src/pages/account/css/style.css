@@ -1,0 +1,106 @@
+body {
+  background-image: url('../../../assets/background.jpeg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--spacing-medium);
+}
+
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.account-card {
+  background-color: var(--light-beige);
+  padding: var(--spacing-large);
+  border-radius: 45px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: var(--spacing-medium);
+}
+
+h1 {
+  font-size: var(--font-size-large);
+  color: var(--dark-brown);
+  margin-bottom: var(--spacing-medium);
+}
+
+.input-group {
+  margin-bottom: var(--spacing-medium);
+  text-align: left;
+}
+
+.input-group label {
+  font-size: var(--font-size-small);
+  color: var(--soft-black);
+  margin-bottom: var(--spacing-small);
+  display: block;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border: 1px solid var(--soft-black);
+    border-radius: 15px;
+    padding: var(--spacing-medium);
+    gap: 10px;
+  }
+
+.input-wrapper i {
+  color: var(--soft-black);
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  font-size: var(--font-size-base);
+  flex: 1;
+  color: var(--soft-black);
+}
+
+.input-wrapper input[readonly] {
+  background-color: var(--off-white);
+  cursor: not-allowed;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--soft-black);
+}
+
+.save-button {
+  background-color: var(--leaf-green);
+  color: var(--white);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-medium) var(--spacing-medium);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease-out;
+
+  /* Faz o botão ocupar as duas colunas */
+  grid-column: span 2;
+}
+
+.save-button:hover {
+  background-color: var(--gold);
+  transition: all 0.3s ease-in;
+}
