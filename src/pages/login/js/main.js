@@ -73,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Armazena o ID do usuário no localStorage
       localStorage.setItem('userId', user.id);
 
+      // Armazena o objeto completo do usuário no localStorage
+      localStorage.setItem('user', JSON.stringify(user));
+
       // Redireciona para a página principal
       window.location.href = '../../../../index.html';
     } else {
