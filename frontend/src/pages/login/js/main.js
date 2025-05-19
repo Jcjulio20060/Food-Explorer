@@ -38,15 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Validação do formulário
-  loginForm.addEventListener('submit', (event) => {
+  loginForm.addEventListener('submit', async (event) => {
     event.preventDefault(); // Evita o envio do formulário
 
-    const cpf = cpfInput.value.trim();
+    const cpf = cpfInput.value.replace(/\D/g, ''); // Remove pontos e traços
     const password = passwordInput.value.trim();
     let hasError = false;
 
     // Valida CPF
-    if (cpf.length !== 14) { // CPF deve ter 14 caracteres (incluindo máscara)
+    if (cpf.length !== 11) { // CPF deve ter 11 dígitos numéricos
       cpfError.textContent = 'Por favor, insira um CPF válido.';
       cpfError.style.display = 'block';
       hasError = true;
@@ -66,10 +66,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Se houver erros, não prossegue
     if (hasError) return;
 
-    // Valida se o CPF e a senha correspondem a um usuário
-    const user = users.find((user) => user.cpf === cpf && user.password === password);
+    try {
+      // Envia a requisição para buscar o usuário pelo CPF e senha
+      const response = await fetch(`http://localhost:3000/usuarios?cpf=${cpf}&senha=${password}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    if (user) {
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.erro || 'Erro ao fazer login.');
+      }
+
+      const user = await response.json();
+
       // Armazena o ID do usuário no localStorage
       localStorage.setItem('userId', user.id);
 
@@ -78,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Redireciona para a página principal
       window.location.href = '../../../../index.html';
-    } else {
-      cpfError.textContent = 'CPF ou senha inválidos.';
+    } catch (error) {
+      cpfError.textContent = error.message;
       cpfError.style.display = 'block';
     }
   });

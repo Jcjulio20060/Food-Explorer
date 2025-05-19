@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Validação do formulário
-  registerForm.addEventListener('submit', (event) => {
+  registerForm.addEventListener('submit', async (event) => {
     event.preventDefault(); // Evita o envio do formulário
 
     let hasError = false;
@@ -112,22 +112,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Se houver erros, não prossegue
     if (hasError) return;
 
-    // Cria o objeto do usuário
-    const newUser = {
-      id: Date.now(), // Gera um ID único com base no timestamp
-      name: nomeInput.value.trim(),
-      surname: sobrenomeInput.value.trim(),
-      cpf: cpfInput.value.trim(),
-      birthDate: nascimentoInput.value.trim(),
-      email: emailInput.value.trim(),
-      password: senhaInput.value.trim(),
-    };
+    try {
+      // Cria o objeto do usuário com nome completo
+      const newUser = {
+        nome: `${nomeInput.value.trim()} ${sobrenomeInput.value.trim()}`, // Junta nome e sobrenome
+        cpf: cpfInput.value.replace(/\D/g, ''), // Remove a máscara do CPF
+        dateBirth: nascimentoInput.value.trim(),
+        email: emailInput.value.trim(),
+        senha: senhaInput.value.trim(),
+      };
 
-    // Armazena o usuário no localStorage
-    localStorage.setItem('user', JSON.stringify(newUser));
-    localStorage.setItem('userId', newUser.id);
+      // Envia a requisição para a API
+      const response = await fetch('http://localhost:3000/usuarios', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
 
-    // Redireciona para a página principal
-    window.location.href = '../../../../index.html';
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.erro || 'Erro ao cadastrar usuário.');
+      }
+
+      alert('Usuário cadastrado com sucesso!');
+      window.location.href = '../login/index.html'; // Redireciona para a página de login
+    } catch (error) {
+      alert(error.message);
+    }
   });
 });
