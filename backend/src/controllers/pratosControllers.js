@@ -1,4 +1,5 @@
 const Prato = require('../models/pratos');
+const fetch = (...args) => import('node-fetch').then(({default:f}) => f(...args));
 
 // GET /pratos
 exports.listar = async (req, res) => {
@@ -54,5 +55,40 @@ exports.remover = async (req, res) => {
     res.json({ mensagem: 'Prato removido com sucesso.' });
   } catch (e) {
     res.status(400).json({ erro: e.message });
+  }
+};
+
+// GET Importar pratos da API externa
+exports.importar = async (_req, res) => {
+  try {
+    const api = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    if (!api.ok) {
+      return res.status(api.status).json({ erro: 'Erro ao acessar a API externa' });
+    }
+    const { meals } = await api.json();
+    if (!Array.isArray(meals)) {
+      return res.status(500).json({ erro: 'Resposta inesperada da API externa' });
+    }
+
+    if (!meals) {
+      return res.status(404).json({ erro: 'Nenhum prato encontrado na API externa' });
+    }
+
+    const docs = meals.map(m => ({
+      nome: m.strMeal,
+      categoria: m.strCategory,
+      instrucoes: m.strInstructions,
+      imagem: m.strMealThumb,
+      preco: parseFloat((Math.random() * (80 - 20) + 20).toFixed(2)), // preço aleatório entre 20 e 80
+      descricao: m.strInstructions?.slice(0, 100) + '...' || 'Sem descrição'
+    }));
+
+    await Prato.deleteMany();
+    await Prato.insertMany(docs);
+
+    res.json({ ok: true, total: docs.length });
+  } catch (error) {
+    console.error('Erro ao importar pratos:', error.message);
+    res.status(500).json({ erro: 'Erro ao importar pratos' });
   }
 };

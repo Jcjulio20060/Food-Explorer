@@ -82,8 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const user = await response.json();
 
-      // Armazena o ID do usuário no localStorage
-      localStorage.setItem('userId', user.id);
+      // Certifique-se de que o ID está sendo acessado corretamente
+      localStorage.setItem('userId', user._id || user.id); // Use `_id` ou `id`, dependendo do backend
+      console.log(user._id || user.id); // Verifica se o ID está correto
 
       // Armazena o objeto completo do usuário no localStorage
       localStorage.setItem('user', JSON.stringify(user));

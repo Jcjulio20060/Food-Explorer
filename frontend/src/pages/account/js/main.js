@@ -8,22 +8,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmarSenhaInput = document.getElementById('confirmar-senha');
   const saveButton = document.querySelector('.save-button');
 
-  // Carrega os dados do usuário do localStorage
-  const user = JSON.parse(localStorage.getItem('user'));
+  // Obtém o ID do usuário do localStorage
+  const userId = localStorage.getItem('userId');
 
-  if (user) {
-    nomeInput.value = user.name || '';
-    sobrenomeInput.value = user.surname || '';
-    cpfInput.value = user.cpf || '';
-    emailInput.value = user.email || '';
-    nascimentoInput.value = user.birthDate || '';
-  } else {
+  if (!userId) {
     alert('Nenhum usuário logado. Redirecionando para a página de login.');
     window.location.href = '../login/index.html';
+    return;
   }
 
+  // Busca os dados do usuário na API
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
+      if (!response.ok) {
+        throw new Error('Erro ao buscar os dados do usuário.');
+      }
+
+      const user = await response.json();
+
+      // Preenche os campos com os dados do usuário
+      nomeInput.value = user.nome.split(' ')[0] || ''; // Primeiro nome
+      sobrenomeInput.value = user.nome.split(' ').slice(1).join(' ') || ''; // Sobrenome
+      cpfInput.value = user.cpf || '';
+      emailInput.value = user.email || '';
+      nascimentoInput.value = user.dataNascimento || '';
+    } catch (error) {
+      alert(error.message);
+      window.location.href = '../login/index.html';
+    }
+  };
+
+  fetchUserData();
+
   // Validação e salvamento das alterações
-  saveButton.addEventListener('click', (event) => {
+  saveButton.addEventListener('click', async (event) => {
     event.preventDefault(); // Evita o envio do formulário
 
     let hasError = false;
@@ -57,18 +76,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Se houver erros, não prossegue
     if (hasError) return;
 
-    // Atualiza os dados do usuário
-    const updatedUser = {
-      ...user,
-      name: nomeInput.value.trim(),
-      surname: sobrenomeInput.value.trim(),
-      birthDate: nascimentoInput.value.trim(),
-      password: senhaInput.value.trim() || user.password, // Mantém a senha antiga se não for alterada
-    };
+    try {
+      // Cria o objeto com os dados atualizados
+      const updatedUser = {
+        nome: `${nomeInput.value.trim()} ${sobrenomeInput.value.trim()}`, // Junta nome e sobrenome
+        dataNascimento: nascimentoInput.value.trim(),
+        senha: senhaInput.value.trim() || undefined, // Envia a senha apenas se for alterada
+      };
 
-    // Salva os dados atualizados no localStorage
-    localStorage.setItem('user', JSON.stringify(updatedUser));
+      // Envia a requisição para atualizar os dados do usuário
+      const response = await fetch(`http://localhost:3000/usuarios/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedUser),
+      });
 
-    alert('Alterações salvas com sucesso!');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.erro || 'Erro ao atualizar os dados do usuário.');
+      }
+
+      alert('Alterações salvas com sucesso!');
+      window.location.reload(); // Recarrega a página para exibir os dados atualizados
+    } catch (error) {
+      alert(error.message);
+    }
   });
 });

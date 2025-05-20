@@ -1,4 +1,5 @@
 const Usuario = require('../models/users');
+const bcrypt = require('bcrypt');
 
 // GET /usuarios
 exports.listar = async (req, res) => {
@@ -20,8 +21,6 @@ exports.detalhar = async (req, res) => {
     res.status(400).json({ erro: e.message });
   }
 };
-
-const bcrypt = require('bcrypt');
 
 // GET /usuarios?cpf=12345678900
 exports.searchCPF = async (req, res) => {
