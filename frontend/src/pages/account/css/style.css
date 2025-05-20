@@ -85,6 +85,12 @@ h1 {
   color: var(--soft-black);
 }
 
+.buttons {
+  grid-column: span 2;
+  display: flex;
+  gap: var(--spacing-medium);
+}
+
 .save-button {
   background-color: var(--leaf-green);
   color: var(--white);
@@ -93,14 +99,28 @@ h1 {
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  width: 100%;
+  flex: 1;
   transition: all 0.3s ease-out;
-
-  /* Faz o botão ocupar as duas colunas */
-  grid-column: span 2;
 }
 
 .save-button:hover {
   background-color: var(--gold);
+  transition: all 0.3s ease-in;
+}
+
+.delete-button {
+  background-color: red;
+  color: var(--white);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-medium) var(--spacing-medium);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease-out;
+}
+
+.delete-button:hover {
+  background-color: var(--soft-black);
   transition: all 0.3s ease-in;
 }

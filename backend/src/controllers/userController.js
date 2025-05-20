@@ -32,11 +32,11 @@ exports.searchCPF = async (req, res) => {
       return res.status(400).json({ erro: 'CPF e senha são obrigatórios.' });
     }
 
-    // Converte o CPF para número antes de buscar
-    const cpfNumerico = Number(cpf);
+    // Remove caracteres não numéricos do CPF
+    const cpfNormalizado = cpf.replace(/\D/g, '');
 
-    // Busca o usuário pelo CPF
-    const user = await Usuario.findOne({ cpf: cpfNumerico });
+    // Busca o usuário pelo CPF normalizado
+    const user = await Usuario.findOne({ cpf: cpfNormalizado });
     if (!user) {
       return res.status(404).json({ erro: 'Usuário não encontrado.' });
     }
@@ -70,18 +70,22 @@ exports.criar = async (req, res) => {
 // PUT /usuarios/:id
 exports.atualizar = async (req, res) => {
   try {
-    // Evita troca de senha/cpf/email sem lógica extra
-    const camposSeguros = (({ nome, dateBirth }) => ({ nome, dateBirth }))(req.body);
+    const { nome, dataNascimento, email, senha } = req.body;
 
-    const upd = await Usuario.findByIdAndUpdate(
-      req.params.id,
-      camposSeguros,
-      { new: true, runValidators: true, select: '-senha' }
-    );
-    if (!upd) return res.status(404).json({ erro: 'Usuário não encontrado.' });
-    res.json(upd);
-  } catch (e) {
-    res.status(400).json({ erro: e.message });
+    // Atualiza os dados do usuário
+    const updates = { nome, dataNascimento, email };
+    if (senha) {
+      updates.senha = await bcrypt.hash(senha, 10); // Criptografa a nova senha
+    }
+
+    const user = await Usuario.findByIdAndUpdate(req.params.id, updates, { new: true });
+    if (!user) {
+      return res.status(404).json({ erro: 'Usuário não encontrado.' });
+    }
+
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ erro: error.message });
   }
 };
 

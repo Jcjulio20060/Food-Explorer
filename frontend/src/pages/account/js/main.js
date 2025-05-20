@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const senhaInput = document.getElementById('senha');
   const confirmarSenhaInput = document.getElementById('confirmar-senha');
   const saveButton = document.querySelector('.save-button');
+  const deleteButton = document.querySelector('.delete-button'); // Botão de deletar conta
 
   // Obtém o ID do usuário do localStorage
   const userId = localStorage.getItem('userId');
@@ -32,7 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
       sobrenomeInput.value = user.nome.split(' ').slice(1).join(' ') || ''; // Sobrenome
       cpfInput.value = user.cpf || '';
       emailInput.value = user.email || '';
-      nascimentoInput.value = user.dataNascimento || '';
+      if (user.dateBirth) {
+        const data = new Date(user.dateBirth);
+        nascimentoInput.value = data.toISOString().split('T')[0]; // Formata para YYYY-MM-DD
+      } else {
+        nascimentoInput.value = '';
+      }
     } catch (error) {
       alert(error.message);
       window.location.href = '../login/index.html';
@@ -40,6 +46,32 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   fetchUserData();
+
+  // Lógica para deletar a conta
+  deleteButton.addEventListener('click', async () => {
+    const confirmDelete = confirm('Tem certeza de que deseja deletar sua conta? Esta ação não pode ser desfeita.');
+    if (!confirmDelete) return;
+
+    try {
+      const response = await fetch(`http://localhost:3000/usuarios/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.erro || 'Erro ao deletar a conta.');
+      }
+
+      alert('Conta deletada com sucesso!');
+      localStorage.clear(); // Limpa o localStorage
+      window.location.href = '../login/index.html'; // Redireciona para a página de login
+    } catch (error) {
+      alert(error.message);
+    }
+  });
 
   // Validação e salvamento das alterações
   saveButton.addEventListener('click', async (event) => {
@@ -65,11 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
       hasError = true;
     }
 
+    // Valida E-mail
+    if (emailInput.value.trim() === '') {
+      alert('Por favor, insira seu e-mail.');
+      hasError = true;
+    }
+
     // Valida Senha
+    let senha = undefined;
     if (senhaInput.value.trim() !== '' || confirmarSenhaInput.value.trim() !== '') {
       if (senhaInput.value !== confirmarSenhaInput.value) {
         alert('As senhas não coincidem.');
         hasError = true;
+      } else {
+        senha = senhaInput.value.trim(); // Define a nova senha
       }
     }
 
@@ -81,7 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const updatedUser = {
         nome: `${nomeInput.value.trim()} ${sobrenomeInput.value.trim()}`, // Junta nome e sobrenome
         dataNascimento: nascimentoInput.value.trim(),
-        senha: senhaInput.value.trim() || undefined, // Envia a senha apenas se for alterada
+        email: emailInput.value.trim(),
+        ...(senha && { senha }), // Inclui a senha apenas se ela for definida
       };
 
       // Envia a requisição para atualizar os dados do usuário

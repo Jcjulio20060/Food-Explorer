@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       // Envia a requisição para buscar o usuário pelo CPF e senha
-      const response = await fetch(`http://localhost:3000/usuarios?cpf=${cpf}&senha=${password}`, {
+      const response = await fetch(`http://localhost:3000/usuarios/buscar?cpf=${cpf}&senha=${password}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -81,13 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const user = await response.json();
+      console.log('Resposta da API:', user);
 
       // Certifique-se de que o ID está sendo acessado corretamente
       localStorage.setItem('userId', user._id || user.id); // Use `_id` ou `id`, dependendo do backend
-      console.log(user._id || user.id); // Verifica se o ID está correto
-
-      // Armazena o objeto completo do usuário no localStorage
-      localStorage.setItem('user', JSON.stringify(user));
 
       // Redireciona para a página principal
       window.location.href = '../../../../index.html';
