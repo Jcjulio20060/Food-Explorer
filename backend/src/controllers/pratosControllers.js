@@ -78,7 +78,7 @@ exports.importar = async (_req, res) => {
       nome: m.strMeal,
       categoria: m.strCategory,
       instrucoes: m.strInstructions,
-      imagem: m.strMealThumb,
+      imagemUrl: m.strMealThumb,
       preco: parseFloat((Math.random() * (80 - 20) + 20).toFixed(2)), // preço aleatório entre 20 e 80
       descricao: m.strInstructions?.slice(0, 100) + '...' || 'Sem descrição'
     }));
