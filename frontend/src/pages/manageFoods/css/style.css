@@ -1,0 +1,347 @@
+/* Estilo para as imagens na tabela */
+.food-table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 30px;
+  color: var(--soft-black);
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column; /* Alinha os itens verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+}
+
+/* Ajuste para o botão de adicionar alimento */
+.add-food-button {
+  display: block;
+  margin: var(--spacing-large) auto;
+  padding: var(--spacing-medium) var(--spacing-large);
+  background-color: var(--gold);
+  color: var(--dark-brown);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-large);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-food-button:hover {
+  background-color: var(--leaf-green);
+  color: var(--white);
+}
+
+/* Ajuste para a tabela */
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-large);
+}
+
+.food-table th, .food-table td {
+  border: 1px solid var(--soft-black);
+  padding: var(--spacing-small);
+  text-align: left;
+}
+
+.food-table th {
+  background-color: var(--gold);
+  color: var(--dark-brown);
+}
+
+.food-table td {
+  background-color: var(--light-beige);
+  color: var(--dark-brown);
+}
+
+/* Ajuste para as ações */
+.actions button {
+  padding: var(--spacing-small) var(--spacing-medium);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-small);
+}
+
+.actions .edit-button {
+  background-color: var(--leaf-green);
+  color: var(--white);
+}
+
+.actions .delete-button {
+  background-color: red;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Fundo escuro com mais transparência */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.modal-content label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.modal-content textarea {
+  resize: none;
+  height: 100px;
+}
+
+.modal-content select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.modal-content button {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-content .save-food-button {
+  background-color: #28a745;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.modal-content .save-food-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.modal-content .cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.modal-content .cancel-button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Botão de fechar no canto superior direito */
+.modal-content .close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-content .close-button:hover {
+  color: #333;
+}
+
+/* Animação de entrada do modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+button.cancel-button {
+  background-color: #6c757d;
+  color: #fff;
+  margin-left: 10px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+    height: auto; /* Permite que o conteúdo ocupe mais espaço vertical */
+  }
+
+  .container {
+    max-width: 100%; /* O container ocupa toda a largura disponível */
+    padding: 10px;
+  }
+
+  .logo-container {
+    flex-direction: column; /* Alinha os itens verticalmente */
+    gap: var(--spacing-small); /* Adiciona espaçamento entre logo e título */
+  }
+
+  .logo {
+    width: 120px; /* Reduz o tamanho da logo */
+    margin-bottom: var(--spacing-small);
+  }
+
+  h1 {
+    font-size: var(--font-size-medium); /* Ajusta o tamanho do título */
+    margin-bottom: var(--spacing-small);
+  }
+
+  .add-food-button {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte do botão */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno do botão */
+  }
+
+  .food-table {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte da tabela */
+  }
+
+  .food-table th, .food-table td {
+    padding: var(--spacing-small); /* Reduz o espaçamento interno das células */
+  }
+
+  .modal-content {
+    width: 90%; /* O modal ocupa quase toda a largura disponível */
+    padding: var(--spacing-medium); /* Reduz o espaçamento interno */
+  }
+
+  .modal-content h2 {
+    font-size: var(--font-size-medium); /* Ajusta o tamanho do título do modal */
+  }
+
+  .modal-content input,
+  .modal-content textarea,
+  .modal-content select {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte dos campos */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno dos campos */
+  }
+
+  .modal-content button {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte dos botões */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno dos botões */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 100px; /* Reduz ainda mais o tamanho da logo */
+  }
+
+  h1 {
+    font-size: var(--font-size-small); /* Ajusta o tamanho do título */
+  }
+
+  .add-food-button {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte do botão */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno do botão */
+  }
+
+  .modal-content {
+    padding: var(--spacing-small); /* Reduz ainda mais o espaçamento interno */
+  }
+
+  .modal-content h2 {
+    font-size: var(--font-size-small); /* Ajusta o tamanho do título do modal */
+  }
+
+  .modal-content input,
+  .modal-content textarea,
+  .modal-content select {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte dos campos */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno dos campos */
+  }
+
+  .modal-content button {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte dos botões */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno dos botões */
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Usuários</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../../config/main.css">
+</head>
+<body>
+  <main class="container">
+    <div class="logo-container">
+      <img src="../../assets/logo.png" alt="Logo Coco Bambu" class="logo">
+      <h1>Gerenciamento de Usuários</h1>
+    </div>
+    <button class="add-user-button">Adicionar Usuário</button>
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CPF</th>
+          <th>Tipo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Os usuários serão carregados aqui dinamicamente -->
+      </tbody>
+    </table>
+  </main>
+
+  <!-- Modal para adicionar/editar usuários -->
+  <div class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modal-title">Adicionar Usuário</h2>
+      <form id="user-form">
+        <label for="user-name">Nome:</label>
+        <input type="text" id="user-name" required>
+        <label for="user-email">Email:</label>
+        <input type="email" id="user-email" required>
+        <label for="user-cpf">CPF:</label>
+        <input type="text" id="user-cpf" required>
+        <label for="user-type">Tipo:</label>
+        <select id="user-type" required>
+          <option value="" disabled selected>Selecione o tipo</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Usuário Comum">Usuário Comum</option>
+        </select>
+        <button type="submit" class="save-user-button">Salvar</button>
+        <button type="button" class="cancel-button">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

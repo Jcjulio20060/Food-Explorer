@@ -146,3 +146,80 @@ body {
     margin-top: 5px;
     display: none; /* Esconde a mensagem por padrão */
   }
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+    height: auto; /* Permite que o conteúdo ocupe mais espaço vertical */
+  }
+
+  .login-container {
+    max-width: 100%; /* O container ocupa toda a largura disponível */
+    padding: 10px;
+  }
+
+  .login-card {
+    padding: var(--spacing-medium); /* Reduz o espaçamento interno */
+    border-radius: 20px; /* Ajusta o arredondamento */
+    width: 100%; /* O card ocupa toda a largura disponível */
+  }
+
+  .logo {
+    width: 120px; /* Reduz o tamanho da logo */
+    margin-bottom: var(--spacing-small);
+  }
+
+  h1 {
+    font-size: var(--font-size-medium); /* Ajusta o tamanho do título */
+    margin-bottom: var(--spacing-small);
+  }
+
+  form {
+    grid-template-columns: 1fr; /* Campos em uma única coluna */
+    row-gap: var(--spacing-medium); /* Adiciona espaçamento entre os campos */
+  }
+
+  .input-wrapper {
+    padding: var(--spacing-small); /* Reduz o espaçamento interno dos inputs */
+  }
+
+  .login-button {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte do botão */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno do botão */
+  }
+
+  .signup {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .terms {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: var(--spacing-small); /* Reduz ainda mais o espaçamento interno */
+  }
+
+  .logo {
+    width: 100px; /* Reduz o tamanho da logo para telas muito pequenas */
+  }
+
+  h1 {
+    font-size: var(--font-size-small); /* Ajusta o tamanho do título */
+  }
+
+  .login-button {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte do botão */
+    padding: var(--spacing-small); /* Reduz o espaçamento interno do botão */
+  }
+
+  .signup a,
+  .terms a {
+    font-size: var(--font-size-small); /* Ajusta o tamanho da fonte dos links */
+  }
+}

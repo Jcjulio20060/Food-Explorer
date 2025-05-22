@@ -1,3 +1,4 @@
+/* Estilo base */
 body {
   background-image: url('../../../assets/background.jpeg');
   display: flex;
@@ -8,18 +9,13 @@ body {
   font-family: var(--font-family);
 }
 
-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: var(--spacing-medium);
-}
-
 .account-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 600px;
+  padding: 20px;
 }
 
 .account-card {
@@ -42,6 +38,13 @@ h1 {
   margin-bottom: var(--spacing-medium);
 }
 
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--spacing-medium);
+  row-gap: var(--spacing-medium);
+}
+
 .input-group {
   margin-bottom: var(--spacing-medium);
   text-align: left;
@@ -55,17 +58,13 @@ h1 {
 }
 
 .input-wrapper {
-    display: flex;
-    align-items: center;
-    background-color: var(--white);
-    border: 1px solid var(--soft-black);
-    border-radius: 15px;
-    padding: var(--spacing-medium);
-    gap: 10px;
-  }
-
-.input-wrapper i {
-  color: var(--soft-black);
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  border: 1px solid var(--soft-black);
+  border-radius: 15px;
+  padding: var(--spacing-medium);
+  gap: 10px;
 }
 
 .input-wrapper input {
@@ -91,11 +90,10 @@ h1 {
   gap: var(--spacing-medium);
 }
 
-.save-button {
-  background-color: var(--leaf-green);
-  color: var(--white);
+.save-button,
+.delete-button {
   font-size: var(--font-size-base);
-  padding: var(--spacing-medium) var(--spacing-medium);
+  padding: var(--spacing-medium);
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -103,24 +101,84 @@ h1 {
   transition: all 0.3s ease-out;
 }
 
+.save-button {
+  background-color: var(--leaf-green);
+  color: var(--white);
+}
+
 .save-button:hover {
   background-color: var(--gold);
-  transition: all 0.3s ease-in;
 }
 
 .delete-button {
   background-color: red;
   color: var(--white);
-  font-size: var(--font-size-base);
-  padding: var(--spacing-medium) var(--spacing-medium);
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  flex: 1;
-  transition: all 0.3s ease-out;
 }
 
 .delete-button:hover {
   background-color: var(--soft-black);
-  transition: all 0.3s ease-in;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+    height: auto;
+  }
+
+  .account-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .account-card {
+    padding: var(--spacing-medium);
+    border-radius: 20px;
+  }
+
+  form {
+    grid-template-columns: 1fr; /* Campos em uma única coluna */
+    row-gap: var(--spacing-medium);
+  }
+
+  .buttons {
+    flex-direction: column; /* Botões empilhados */
+    gap: var(--spacing-small);
+  }
+
+  .save-button,
+  .delete-button {
+    font-size: var(--font-size-small);
+    padding: var(--spacing-small);
+  }
+
+  .logo {
+    width: 120px;
+    margin-bottom: var(--spacing-small);
+  }
+
+  h1 {
+    font-size: var(--font-size-medium);
+    margin-bottom: var(--spacing-small);
+  }
+}
+
+@media (max-width: 480px) {
+  .account-card {
+    padding: var(--spacing-small);
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  h1 {
+    font-size: var(--font-size-small);
+  }
+
+  .save-button,
+  .delete-button {
+    font-size: var(--font-size-small);
+    padding: var(--spacing-small);
+  }
 }
