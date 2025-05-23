@@ -5,6 +5,7 @@ const ctrl    = require('../controllers/pratosControllers');
 router.get('/',       ctrl.listar);
 router.get('/importar',       ctrl.importar);
 router.get('/:id',    ctrl.detalhar);
+router.get('/categoria/:categoria', ctrl.pesquisarPorCategoria);
 router.post('/',      ctrl.criar);
 router.put('/:id',    ctrl.atualizar);
 router.delete('/:id', ctrl.remover);

@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const deleteButton = document.querySelector('.delete-button'); // Botão de deletar conta
 
   // Obtém o ID do usuário do localStorage
-  const userId = localStorage.getItem('editingUserId');
-  if (userId) {
+  let userId = localStorage.getItem('editingUserId'); // Changed to let
+  if (userId && userId !== 'null') {
     console.log('ID do usuário para edição:', userId);
     // Use o ID para buscar os dados do usuário na API
   } else {
     console.error('Nenhum ID de usuário encontrado no localStorage.');
+    userId = localStorage.getItem('userId');
   }
 
   if (!userId) {

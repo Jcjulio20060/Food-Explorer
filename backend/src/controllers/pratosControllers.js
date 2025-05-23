@@ -92,3 +92,18 @@ exports.importar = async (_req, res) => {
     res.status(500).json({ erro: 'Erro ao importar pratos' });
   }
 };
+
+// Função para pesquisar pratos por categoria
+exports.pesquisarPorCategoria = async (req, res) => {
+  try {
+    const { categoria } = req.params; // Obtém a categoria dos parâmetros da rota
+    const pratos = await Prato.find({ categoria }); // Filtra os pratos pela categoria
+    if (pratos.length === 0) {
+      return res.status(404).json({ mensagem: 'Nenhum prato encontrado para esta categoria.' });
+    }
+    res.json(pratos);
+  } catch (error) {
+    console.error('Erro ao pesquisar pratos por categoria:', error);
+    res.status(500).json({ mensagem: 'Erro ao pesquisar pratos por categoria.' });
+  }
+};
