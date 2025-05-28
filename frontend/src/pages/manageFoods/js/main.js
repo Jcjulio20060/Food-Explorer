@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fetch foods from API
   const fetchFoods = async () => {
     try {
-      const response = await fetch('http://localhost:3000/pratos', {
+      const response = await fetch('https://food-explorer-687u.onrender.com/pratos', {
         method: 'GET',
       });
       if (!response.ok) throw new Error('Erro ao buscar alimentos.');
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
       throw new Error('Todos os campos são obrigatórios e o preço deve ser um número válido.');
     }
 
-    const response = await fetch('http://localhost:3000/pratos', {
+    const response = await fetch('https://food-explorer-687u.onrender.com/pratos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(foodData),
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Função para editar um alimento existente (PUT)
   const updateFood = async (id, foodData) => {
-    const response = await fetch(`http://localhost:3000/pratos/${id}`, {
+    const response = await fetch(`https://food-explorer-687u.onrender.com/pratos/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(foodData),
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!confirmDelete) return;
 
       try {
-        const response = await fetch(`http://localhost:3000/pratos/${foodId}`, {
+        const response = await fetch(`https://food-explorer-687u.onrender.com/pratos/${foodId}`, {
           method: 'DELETE',
         });
         if (!response.ok) throw new Error('Erro ao excluir alimento.');
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.classList.contains('edit-button')) {
       const foodId = event.target.dataset.id;
       try {
-        const response = await fetch(`http://localhost:3000/pratos/${foodId}`, {
+        const response = await fetch(`https://food-explorer-687u.onrender.com/pratos/${foodId}`, {
           method: 'GET',
         });
         if (!response.ok) throw new Error('Erro ao buscar alimento para edição.');

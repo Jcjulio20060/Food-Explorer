@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Busca os dados do usuário na API
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/usuarios/${userId}`);
+      const response = await fetch(`https://food-explorer-687u.onrender.com/usuarios/${userId}`);
       if (!response.ok) {
         throw new Error('Erro ao buscar os dados do usuário.');
       }
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/usuarios/${userId}`, {
+      const response = await fetch(`https://food-explorer-687u.onrender.com/usuarios/${userId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // Envia a requisição para atualizar os dados do usuário
-      const response = await fetch(`http://localhost:3000/usuarios/${userId}`, {
+      const response = await fetch(`https://food-explorer-687u.onrender.com/usuarios/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

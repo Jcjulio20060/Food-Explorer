@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // Envia a requisição para a API
-      const response = await fetch('http://localhost:3000/usuarios', {
+      const response = await fetch('https://food-explorer-687u.onrender.com/usuarios', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

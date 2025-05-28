@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fetch users from API
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3000/usuarios', {
+      const response = await fetch('https://food-explorer-687u.onrender.com/usuarios', {
         method: 'GET',
       });
       if (!response.ok) throw new Error('Erro ao buscar usuários.');
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!confirmDelete) return;
 
       try {
-        const response = await fetch(`http://localhost:3000/usuarios/${userId}`, {
+        const response = await fetch(`https://food-explorer-687u.onrender.com/usuarios/${userId}`, {
           method: 'DELETE',
         });
         if (!response.ok) throw new Error('Erro ao excluir usuário.');

@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       // Envia a requisição para buscar o usuário pelo CPF e senha
-      const response = await fetch(`http://localhost:3000/usuarios/buscar?cpf=${cpf}&senha=${password}`, {
+      const response = await fetch(`https://food-explorer-687u.onrender.com/usuarios/buscar?cpf=${cpf}&senha=${password}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
