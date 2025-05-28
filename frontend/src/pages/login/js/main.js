@@ -1,5 +1,3 @@
-import users from '../../../config/users.js';
-
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.querySelector('form');
   const cpfInput = document.getElementById('cpf');
@@ -87,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('userId', user._id || user.id); // Use `_id` ou `id`, dependendo do backend
 
       // Redireciona para a página principal
-      window.location.href = '../../../../index.html';
+      window.location.href = '../../../index.html';
     } catch (error) {
       cpfError.textContent = error.message;
       cpfError.style.display = 'block';

@@ -1,0 +1,1127 @@
+/* Estilos gerais para o corpo da página */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5DC; /* Fundo bege claro */
+    color: #333; /* Cor do texto principal no fundo claro - pode ser ajustado */
+    line-height: 1.6;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    box-sizing: border-box;
+    background-color: #2B1D0E; /* Mantém seu marrom escuro atual */
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    padding: 10px 20px;
+    border: #4A3B2C 1px solid; /* Borda um pouco mais escura */
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Estilos para a barra de navegação - Sem grandes mudanças aqui */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Estilos para a imagem da logo - Sem mudanças */
+nav a img {
+    height: auto;
+    max-height: 80px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Estilos para o formulário de busca */
+form {
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    overflow: hidden;
+    background-color: #3a3a3a; /* Fundo do input de busca mais escuro */
+    border: 1px solid #555; /* Borda mais escura */
+    margin-left: 20px;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+/* Estilos para placeholder do input de busca */
+nav input::placeholder {
+    color: #b0b0b0; /* Cor do placeholder mais clara */
+    font-size: 1em;
+    font-style: italic;
+}
+
+/* Estilos para o campo de entrada de texto da busca */
+nav input[type="text"] {
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    width: 100%;
+    background-color: transparent; /* Fundo transparente para herdar do pai (form) */
+    color: #f0f0f0; /* Cor do texto digitado mais clara */
+}
+
+/* Estilos para o botão de busca - Mantém sua cor */
+nav button[type="submit"] {
+    padding: 10px 15px;
+    border: none;
+    background-color: #2B1D0E; /* Marrom escuro */
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 0 30px 30px 0;
+}
+
+/* Estilos para a div dos ícones */
+nav > div { 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1px;
+    margin: 0;
+}
+
+/* Estilos para os ícones - Mantém sua cor */
+nav > div a { 
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+nav > div a:hover {
+    color: #ebdd8f; /* Destaque amarelo */
+}
+
+/* Carrossel */
+.carousel-container {
+    width: 100%;
+    max-width: none;
+    overflow: hidden;
+    height: 300px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Sombra mais intensa */
+    position: relative;
+    background-color: #2c2c2c; /* Fundo do carrossel levemente mais claro que o body */
+}
+
+.carousel-slide {
+    display: flex;
+    width: fit-content;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 100vw; 
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Estilos para o container de localização */
+.location-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 20px;
+    margin-top: 25px;
+    color: #f0f0f0; /* Cor do texto para ser legível no fundo escuro */
+    font-size: 1.1em;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda mais suave e clara */
+    padding-bottom: 15px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.location-container i {
+    font-size: 1.3em;
+    color: #ebdd8f; /* Ícone com cor de destaque */
+}
+
+.location-container p {
+    margin: 0;
+    color: #2B1D0E; /* Texto do parágrafo um pouco mais suave */
+    font-weight: normal;
+    font-size: 0.95em;
+}
+
+/* Estilo do container de categorias (os blocos clicáveis "EM DESTAQUES", etc.) */
+.classification-highlight {
+    display: flex;
+    border-radius: 8px;
+    justify-content: space-around;
+    padding: 15px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #F5F5DC; /* Fundo mais escuro */
+    border: 1px solid #F5F5DC; /* Borda mais escura */
+    flex-wrap: wrap;
+/* box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra para destacar */
+}
+
+/* Estilo de cada categoria (os botões) */
+.classification-highlight a.category-block {
+    background-color: #F5F5DC; /* Fundo do botão mais escuro */
+    color: #2B1D0E; /* Texto do botão claro */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    margin: 5px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+    border: 1px solid #2B1D0E; /* Borda mais escura */
+    min-width: 120px;
+}
+
+.classification-highlight a.category-block:hover {
+    background-color: #ebdd8f; /* Cor de destaque no hover */
+    color: #2B1D0E; /* Texto escuro no hover */
+    border-color: #ebdd8f;
+}
+
+/* Estilos para o conteúdo de cada categoria (as seções que contêm os pratos) */
+.category-content {
+    border: 1px solid #4a4a4a; /* Borda mais escura */
+    margin-top: 50px;
+    padding: 15px;
+    background-color: #291e12; /* Fundo mais escuro */
+    border-radius: 5px;
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra para destacar */
+}
+
+.category-content h2 {
+    color: #ebdd8f; /* Título com cor de destaque */
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+}
+
+/* --- Estilos para os Cards de Prato --- */
+.pratos-categoria-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.card {
+    background-color: #000000; /* Fundo preto para os cards */
+    border: 1px solid #222; /* Borda preta mais escura */
+    border-radius: 8px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Sombra para dar destaque */
+    transition: transform 0.2s ease-in-out;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3); /* Sombra mais intensa no hover */
+}
+
+.card img { 
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.card h2 {
+    color: #FFFFFF; /* Título do prato branco */
+    font-size: 1.3em;
+    margin: 0 15px 5px 15px;
+    text-align: center;
+}
+
+.card p {
+    color: #CCCCCC; /* Descrição do prato um cinza claro */
+    font-size: 0.9em;
+    margin: 0 15px 5px 15px;
+    text-align: center;
+}
+
+.card p.dish-price { /* Se você adicionou a classe dish-price no JS, use-a */
+    color: #FFFFFF; /* Sua cor vermelha para o preço */
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+
+/* --- Rodapé --- */
+footer {
+    background-color: #2B1D0E; /* Mantém seu marrom escuro atual */
+    color: #D0C0B0; 
+    padding: 40px 20px 20px;
+    margin-top: auto;
+    text-align: center;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.6); /* Sombra mais forte */
+    border-top: 3px solid #3e2f1e;
+}
+
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    gap: 30px;
+}
+
+footer .sobre-nos,
+footer .redes-sociais,
+footer .contato {
+    flex: 1;
+    min-width: 250px;
+    text-align: left;
+    padding: 20px;
+    background-color: #3e2f1e; /* Fundo dos blocos do rodapé mais escuro */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Sombra mais intensa */
+    border: 1px solid #5a4b3c;
+}
+
+footer h3 {
+    color: #EBDA8D; /* Mantém sua cor de destaque */
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    border-bottom: 1px solid rgba(235, 221, 143, 0.3);
+    padding-bottom: 8px;
+}
+
+footer p,
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #D0C0B0; /* Cor do texto no rodapé */
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    color: #f0f0f0; /* Links mais claros */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #EBDA8D; /* Cor de destaque no hover */
+}
+
+footer .redes-sociais ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+footer .redes-sociais img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+footer .redes-sociais img:hover {
+    transform: scale(1.1);
+}
+
+footer .copyright {
+    border-top: 1px solid rgba(235, 221, 143, 0.1);
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #8B7A67;
+}
+
+/* --- Estilos para os Botões dos Cards --- */
+
+/* Container dos botões dentro do card */
+.card-buttons {
+    display: flex; /* Para colocar os botões lado a lado */
+    justify-content: space-around; /* Espaçamento entre os botões */
+    align-items: center;
+    padding: 10px 15px 0; /* Padding interno para o container, 0 embaixo para encostar na borda inferior do card */
+    margin-top: auto; /* Empurra o container de botões para o final do card */
+    gap: 10px; /* Espaçamento entre os botões */
+    flex-wrap: wrap; /* Garante que os botões quebrem em telas menores */
+}
+
+.card-buttons .btn {
+    flex: 1; /* Permite que os botões se expandam para ocupar o espaço */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    min-width: 120px; /* Garante uma largura mínima para o botão */
+    display: flex; /* Para alinhar texto e ícone */
+    justify-content: center; /* Centraliza conteúdo */
+    align-items: center; /* Alinha verticalmente */
+}
+
+/* Estilo para o botão "Detalhes" */
+.card-buttons .btn-details {
+    background-color: #3C5D3F; /* Verde vibrante */
+    color: #FFFFFF; /* Texto branco */
+    border: 1px solid #3C5D3F; /* Borda com a mesma cor para preenchimento */
+}
+
+.card-buttons .btn-details:hover {
+    background-color: #3C5D3F; /* Um verde um pouco mais escuro no hover */
+    border-color: #3C5D3F;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Estilo para o botão "Adicionar à Sacola" */
+.card-buttons .btn-add-to-cart {
+    background-color: #3C5D3F; /* Seu amarelo de destaque */
+    color: #FFFFFF; /* Texto marrom escuro (para contraste com o amarelo) */
+    border: 1px solid #3C5D3F; /* Borda com a mesma cor do fundo para um visual preenchido */
+}
+
+.card-buttons .btn-add-to-cart:hover {
+    background-color: #3C5D3F; /* Um pouco mais escuro no hover */
+    color: #2B1D0E; /* Mantém o texto marrom escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Estilos para o ícone da sacola no botão "Adicionar à Sacola" */
+.card-buttons .btn-add-to-cart .icon-container {
+    display: flex;
+    align-items: center;
+    margin-left: 5px; /* Espaço entre o texto e o ícone */
+}
+
+.card-buttons .btn-add-to-cart .icon-container i {
+    font-size: 1.1em; /* Tamanho do ícone */
+    line-height: 1; /* Garante alinhamento vertical */
+}
+
+.card-buttons .btn-add-to-cart .icon-container .fa-plus {
+    font-size: 0.7em; /* O '+' menor */
+    position: relative;
+    top: -0.4em; /* Ajusta a posição vertical do '+' */
+    left: -0.2em; /* Ajusta a posição horizontal do '+' sobrepondo um pouco a sacola */
+}
+
+
+/* --- Ajuste para o preço (reconfirmando) --- */
+.card p.dish-price { /* Se você adicionou a classe dish-price no JS, use-a */
+    color: #FFFFFF; /* Sua cor vermelha para o preço */
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Adiciona um pouco de espaço antes dos botões */
+}
+
+/* Media Queries para responsividade dos botões */
+@media (max-width: 768px) {
+    .card-buttons {
+        flex-direction: column; /* Empilha os botões em telas menores */
+        padding: 8px 10px 0;
+        gap: 8px;
+    }
+    .card-buttons .btn {
+        width: 100%; /* Botões ocupam largura total */
+        min-width: unset; /* Remove min-width */
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-buttons .btn {
+        padding: 7px 10px;
+        font-size: 0.8em;
+    }
+}
+
+/* --- Botão Voltar ao Topo --- */
+#scrollToTopBtn {
+    display: none; /* Escondido por padrão, JavaScript o mostrará */
+    position: fixed; /* Fixado na tela */
+    bottom: 20px; /* 20px do fundo */
+    right: 20px; /* 20px da direita */
+    z-index: 99; /* Acima de outros elementos */
+    background-color: #2B1D0E; /* Seu marrom escuro */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Transforma em círculo */
+    width: 45px; /* Largura do círculo */
+    height: 45px; /* Altura do círculo */
+    font-size: 1.2em; /* Tamanho do ícone */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+    display: flex; /* Para centralizar o ícone */
+    justify-content: center;
+    align-items: center;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #3e2f1e; /* Um pouco mais claro no hover */
+    transform: translateY(-2px); /* Efeito sutil para cima */
+    opacity: 0.9;
+}
+
+/* --- Sacolinha de Pedidos Flutuante --- */
+#cartIcon {
+    position: fixed; /* Fixado na tela */
+    bottom: 20px; /* Mesma altura do botão de topo para alinhamento */
+    left: 20px; /* 20px da esquerda */
+    z-index: 99; /* Acima de outros elementos */
+    background-color: #EBDA8D; /* Seu amarelo de destaque */
+    color: #2B1D0E; /* Cor do ícone */
+    border: none;
+    border-radius: 50%; /* Transforma em círculo */
+    width: 50px; /* Largura do círculo */
+    height: 50px; /* Altura do círculo */
+    font-size: 1.6em; /* Tamanho do ícone da sacola */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+    display: flex; /* Para centralizar o ícone */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Para posicionar o contador dentro dela */
+}
+
+#cartIcon:hover {
+    background-color: #E0CD84; /* Um pouco mais escuro no hover */
+    transform: translateY(-2px); /* Efeito sutil para cima */
+    opacity: 0.9;
+}
+
+#cartIcon #cartItemCount {
+    position: absolute; /* Posiciona o contador sobre a sacola */
+    top: -5px; /* Ajusta a posição vertical */
+    right: -5px; /* Ajusta a posição horizontal */
+    background-color: #B22222; /* Sua cor vermelha para destaque */
+    color: white;
+    font-size: 0.7em; /* Tamanho da fonte do contador */
+    font-weight: bold;
+    border-radius: 50%; /* Transforma em círculo */
+    padding: 3px 6px; /* Padding para o número */
+    min-width: 18px; /* Garante que o círculo seja visível mesmo com 1 dígito */
+    text-align: center;
+    line-height: 1; /* Alinha o texto verticalmente */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* display: none; /* Pode esconder se o contador for 0 */
+}
+
+/* Estilos do Modal da Sacola */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fixo na tela */
+    z-index: 1000; /* Acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    overflow: auto; /* Habilita rolagem se o conteúdo for muito grande */
+    background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Para centralizar */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+    max-height: 90vh; /* Altura máxima para caber na tela */
+    display: flex;
+    flex-direction: column;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute; /* Posiciona o botão de fechar */
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cart-items-container {
+    flex-grow: 1; /* Permite que o container de itens cresça e ocupe o espaço */
+    overflow-y: auto; /* Adiciona scroll se a lista de itens for grande */
+    margin-bottom: 20px;
+    padding-right: 10px; /* Espaço para a barra de rolagem */
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.cart-item-info img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-item-details h4 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.cart-item-details p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item-controls button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-item-controls button.quantity-btn {
+    background-color: #007bff;
+    padding: 3px 8px;
+}
+
+.cart-item-controls span {
+    font-weight: bold;
+}
+
+.cart-summary {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.btn-checkout {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.btn-checkout:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Estilos para o ícone do carrinho */
+#cartIcon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color:  #3C5D3F; /* Cor do Coco Bambu */
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999; /* Garante que fique acima de outros elementos */
+}
+
+#cartIcon i {
+    margin-right: 5px; /* Espaço entre o ícone e o contador */
+}
+
+#cartItemCount {
+    background-color: #ff9800;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 8px;
+    font-size: 0.7em;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    transform: translate(50%, -50%); /* Ajusta a posição */
+    min-width: 25px; /* Garante que o círculo seja visível mesmo com 1 dígito */
+    text-align: center;
+}
+
+/* --- Estilos para o botão "Limpar Busca" --- */
+.btn-clear-search {
+    background-color: #5A4B3C; /* Um marrom médio, que combine com sua paleta */
+    color: #FFFFFF;
+    border: 1px solid #5A4B3C;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px; /* Espaço acima dos resultados */
+    margin-bottom: 20px; /* Espaço abaixo, se houver */
+    display: block; /* Para ocupar a largura total do container */
+    width: fit-content; /* Ajusta a largura ao conteúdo */
+    margin-left: auto; /* Centraliza */
+    margin-right: auto; /* Centraliza */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-clear-search:hover {
+    background-color: #6D5E4F; /* Um pouco mais escuro no hover */
+    border-color: #6D5E4F;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-clear-search i {
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+}
+
+/* Ajuste para quando o botão estiver no searchResultsContainer */
+#searchResultsContainer .btn-clear-search {
+    margin-top: 15px; /* Ajuste a margem se necessário */
+    margin-bottom: 15px;
+}
+
+/* Media Queries para ajuste em telas menores */
+@media (max-width: 768px) {
+    #scrollToTopBtn {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.1em;
+    }
+
+    #cartIcon {
+        bottom: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.4em;
+    }
+
+    #cartIcon #cartItemCount {
+        top: -4px;
+        right: -4px;
+        font-size: 0.65em;
+        padding: 2px 5px;
+        min-width: 16px;
+    }
+}
+@media (max-width: 480px) {
+    #scrollToTopBtn {
+        bottom: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+
+    #cartIcon {
+        bottom: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.3em;
+    }
+
+    #cartIcon #cartItemCount {
+        top: -3px;
+        right: -3px;
+        font-size: 0.6em;
+        padding: 2px 4px;
+        min-width: 14px;
+    }
+}
+
+
+/* --- Media Queries para Responsividade --- */
+
+/* Para telas menores que 1024px (laptops e tablets em modo paisagem) */
+@media (max-width: 1024px) {
+    header {
+        padding: 10px 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav a img {
+        max-height: 70px;
+        margin-bottom: 10px;
+    }
+
+    form {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 90%;
+        max-width: 350px;
+    }
+
+    nav input[type="text"] {
+        width: calc(100% - 60px);
+    }
+
+    nav button[type="submit"] {
+        padding: 9px 12px;
+    }
+
+    nav > div { 
+        justify-content: center;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    nav > div a {
+        font-size: 1.3em;
+        margin: 0 8px;
+    }
+
+    .carousel-container {
+        height: 250px;
+    }
+
+    .location-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 10px 15px;
+    }
+
+    .location-container i {
+        margin-right: 0;
+    }
+
+    .classification-highlight {
+        flex-direction: column;
+        width: 95%;
+        padding: 10px;
+    }
+
+    .classification-highlight a.category-block {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .category-content {
+        width: 95%;
+        padding: 12px;
+    }
+
+    .category-content h2 {
+        font-size: 1.8em;
+    }
+
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    footer .sobre-nos,
+    footer .redes-sociais,
+    footer .contato {
+        width: 90%;
+        min-width: unset;
+        text-align: center;
+        padding: 15px;
+    }
+
+    footer .redes-sociais ul {
+        justify-content: center;
+    }
+
+    .pratos-categoria-container {
+        padding: 10px 0;
+    }
+    .card {
+        width: calc(50% - 20px); 
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+    .card img {
+        height: 150px;
+    }
+}
+
+/* Para telas menores que 768px (tablets em modo retrato e smartphones grandes) */
+@media (max-width: 768px) {
+    header {
+        padding: 8px 10px;
+        border-radius: 0;
+    }
+
+    nav a img {
+        max-height: 60px;
+    }
+
+    form {
+        width: 100%;
+        max-width: none;
+    }
+
+    nav input[type="text"] {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    nav button[type="submit"] {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    nav > div a {
+        font-size: 1.1em;
+        margin: 0 5px;
+    }
+
+    .carousel-container {
+        height: 200px;
+    }
+
+    .location-container {
+        font-size: 1em;
+    }
+
+    .location-container i {
+        font-size: 1.1em;
+    }
+
+    .classification-highlight {
+        padding: 8px;
+    }
+
+    .classification-highlight a.category-block {
+        font-size: 0.85em;
+        padding: 8px 12px;
+    }
+
+    .category-content {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .category-content h2 {
+        font-size: 1.5em;
+    }
+
+    footer {
+        padding: 30px 15px 15px;
+    }
+
+    footer .container {
+        gap: 15px;
+    }
+
+    footer .sobre-nos,
+    footer .redes-sociais,
+    footer .contato {
+        padding: 12px;
+    }
+
+    footer h3 {
+        font-size: 1.2em;
+    }
+
+    footer p,
+    footer ul {
+        font-size: 0.85em;
+    }
+
+    .card {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* Para telas menores que 480px (smartphones menores) */
+@media (max-width: 480px) {
+    header {
+        padding: 5px;
+    }
+
+    nav a img {
+        max-height: 50px;
+    }
+
+    form {
+        border-radius: 20px;
+    }
+
+    nav input[type="text"] {
+        padding: 7px 10px;
+        font-size: 0.85em;
+    }
+
+    nav button[type="submit"] {
+        padding: 7px 10px;
+        font-size: 0.85em;
+        border-radius: 0 20px 20px 0;
+    }
+
+    nav > div a {
+        font-size: 1em;
+        margin: 0 3px;
+    }
+
+    .carousel-container {
+        height: 150px;
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .location-container {
+        font-size: 0.9em;
+        gap: 10px;
+        padding: 8px 10px;
+        padding-bottom: 10px;
+    }
+
+    .location-container i {
+        font-size: 1em;
+    }
+
+    .classification-highlight {
+        padding: 5px;
+    }
+
+    .classification-highlight a.category-block {
+        font-size: 0.8em;
+        padding: 6px 8px;
+    }
+
+    .category-content {
+        margin-top: 15px;
+        padding: 8px;
+    }
+
+    .category-content h2 {
+        font-size: 1.2em;
+    }
+
+    footer {
+        padding: 20px 10px 10px;
+    }
+
+    footer .sobre-nos,
+    footer .redes-sociais,
+    footer .contato {
+        padding: 10px;
+    }
+
+    footer h3 {
+        font-size: 1.1em;
+    }
+
+    footer p,
+    footer ul {
+        font-size: 0.8em;
+    }
+
+    footer .copyright {
+        font-size: 0.75em;
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+}

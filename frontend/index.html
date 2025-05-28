@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Coco Bambu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html"> 
+                <img src="assets/image 6.png" alt="Logo do Coco Bambu"> 
+            </a>
+            <form action="#" method="get">
+                <input type="text" name="busca" placeholder="Buscar por nome...">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <div>
+                <a href="#"><i class="fas fa-bell"></i><span class="notification-badge"></span></a> 
+                <a href="./src/pages/login/index.html"><i class="fas fa-user-circle"></i></a>
+                <span id="userName" style="margin-left: 10px; color: #fff; font-weight: bold;"></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="assets/prato peixe e frutos cardapio 2.webp" alt="Imagem 1">
+            <img src="assets/coco nova 2.jpg" alt="Imagem 2">
+            <img src="assets/imagem cocobambu 2.jpg" alt="Imagem 3">
+        </div>
+    </div>
+
+     <section id="searchResultsContainer" class="category-content" style="display: none;">
+        </section>
+        
+    <section id="searchResultsContainer" class="category-content" style="display: none;">
+    <button id="clearSearchBtn" class="btn btn-clear-search" style="display: none;">
+        <i class="fas fa-undo"></i> Voltar ao Cardápio
+    </button>
+    </section>
+
+
+    <div class="location-container">
+        <i class="fas fa-map-marker-alt"></i>
+        <i class="fa-solid fa-share-nodes"></i>
+        <p>Recife, PE, Brasil</p>
+    </div>
+
+    <div class="classification-highlight">
+        <div id="categorias"></div>
+        <div id="pratos"></div>
+        <button id="botao-usuario">👤</button>
+    </div>
+
+    <main>
+        <div id="destaques-content" class="category-content">
+            <h2>Promoções Imperdíveis!</h2>
+            <div id="pratos-container-destaques" class="pratos-categoria-container">
+            </div>
+        </div>
+
+        <div id="executivos-content" class="category-content">
+            <h2>Pratos Executivos Deliciosos</h2>
+            <div id="pratos-container-executivos" class="pratos-categoria-container">
+            </div>
+        </div>
+
+        <div id="massas-content" class="category-content">
+            <h2>Variedade de Massas Frescas</h2>
+            <div id="pratos-container-massas" class="pratos-categoria-container">
+            </div>
+        </div>
+
+        <div id="sobremesas-content" class="category-content">
+            <h2>Sobremesas de Dar Água na Boca</h2>
+            <div id="pratos-container-sobremesas" class="pratos-categoria-container">
+            </div>
+        </div>
+
+        <div id="bebidas-content" class="category-content">
+            <h2>Refresque-se com Nossas Bebidas</h2>
+            <div id="pratos-container-bebidas" class="pratos-categoria-container">
+            </div>
+        </div>
+    </main>
+    
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Sua Sacola</h2>
+            <div id="cartItemsContainer" class="cart-items-container">
+                <p id="emptyCartMessage" style="text-align: center; color: #666;">Sua sacola está vazia.</p>
+            </div>
+            <div class="cart-summary">
+                <p>Total: <span id="cartTotal">R$ 0,00</span></p>
+                <button id="checkoutButton" class="btn btn-checkout" disabled>Finalizar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+
+    <button id="scrollToTopBtn" title="Voltar ao Topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div id="cartIcon" title="Ver Sacola">
+        <i class="fa-solid fa-shopping-bag"></i>
+        <span id="cartItemCount">0</span> 
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="sobre-nos">
+                <h3>Sobre Nós</h3>
+                <p>O Coco Bambu é um dos maiores e mais conceituados restaurantes do Brasil, especializado em frutos do mar.</p>
+                <p>Com um ambiente aconchegante e cardápio variado, oferecemos uma experiência gastronômica inesquecível para toda a família.</p>
+            </div>
+            <div class="redes-sociais">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="contato">
+                <h3>Contato</h3>
+                <p>Endereço: Rua do Futuro, 123, Boa Viagem, Recife - PE</p>
+                <p>Telefone: (81) 98765-4321</p>
+                <p>Email: contato@cocobambu.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Coco Bambu. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script> 
+</body>
+</html>

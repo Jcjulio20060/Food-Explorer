@@ -107,3 +107,18 @@ exports.pesquisarPorCategoria = async (req, res) => {
     res.status(500).json({ mensagem: 'Erro ao pesquisar pratos por categoria.' });
   }
 };
+
+// GET /pratos/nome/:nome
+exports.pesquisarPorNome = async (req, res) => {
+  try {
+    const { nome } = req.params;
+    const pratos = await Prato.find({ nome: { $regex: nome, $options: 'i' } }); // Busca por nome (case-insensitive)
+    if (pratos.length === 0) {
+      return res.status(404).json({ mensagem: 'Nenhum prato encontrado com este nome.' });
+    }
+    res.json(pratos);
+  } catch (error) {
+    console.error('Erro ao pesquisar pratos por nome:', error);
+    res.status(500).json({ mensagem: 'Erro ao pesquisar pratos por nome.' });
+  }
+};
