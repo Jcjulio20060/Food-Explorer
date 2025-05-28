@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const foodImageInput = document.getElementById('food-image');
   const foodCategoryInput = document.getElementById('food-category'); // Adiciona o campo de categoria
   const cancelButton = document.querySelector('.cancel-button');
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
 
   let editingFoodId = null;
 
@@ -20,6 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
         method: 'GET',
       });
       if (!response.ok) throw new Error('Erro ao buscar alimentos.');
+      const foods = await response.json();
+      renderFoods(foods);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // Função para buscar pratos pelo nome
+  const searchFoodsByName = async (name) => {
+    try {
+      const response = await fetch(`https://food-explorer-687u.onrender.com/pratos/nome/${name}`, {
+        method: 'GET',
+      });
+      if (!response.ok) throw new Error('Erro ao buscar pratos pelo nome.');
       const foods = await response.json();
       renderFoods(foods);
     } catch (error) {
@@ -158,6 +174,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         alert(error.message);
       }
+    }
+  });
+
+  // Adicionar evento ao botão de busca
+  searchButton.addEventListener('click', () => {
+    const name = searchInput.value.trim();
+    if (name) {
+      searchFoodsByName(name);
+    } else {
+      alert('Por favor, insira um nome para buscar.');
     }
   });
 

@@ -1,31 +1,18 @@
-// main.js
-import { getCategoriasDisponiveis, getPratosPorCategoria } from './api.js';
-import { criarBotaoCategoria, renderizarPratos } from './ui.js';
-import { redirecionarUsuario } from './auth.js';
+/**
+ * INICIA O SISTEMA: CHAMA O CARREGAMENTO DOS PRATOS E ATIVA OS EVENTOS
+ * Mapeia containers HTML das categorias para inserção dinâmica dos cards.
+ * Cada chave representa uma categoria local e é ligada ao seu respectivo container no HTML.
+ */
+const containersPorCategoria = {
+    'destaques': document.getElementById('pratos-container-destaques'),
+    'executivos': document.getElementById('pratos-container-executivos'),
+    'massas': document.getElementById('pratos-container-massas'),
+    'sobremesas': document.getElementById('pratos-container-sobremesas'),
+    'bebidas': document.getElementById('pratos-container-bebidas')
+};
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const containerCategorias = document.getElementById('categorias');
-  const containerPratos = document.getElementById('pratos');
+// Carrega os pratos de cada categoria usando a API externa
+carregarPratos(containersPorCategoria);
 
-  try {
-    const categorias = await getCategoriasDisponiveis();
-
-    categorias.forEach(categoria => {
-      const btn = criarBotaoCategoria(categoria, async () => {
-        const pratos = await getPratosPorCategoria(categoria);
-        renderizarPratos(containerPratos, pratos);
-      });
-
-      containerCategorias.appendChild(btn);
-    });
-
-  } catch (err) {
-    console.error('Erro ao carregar categorias:', err);
-  }
-
-  // Redirecionar usuário se estiver logado
-  const userBtn = document.getElementById('botao-usuario');
-  if (userBtn) {
-    userBtn.addEventListener('click', redirecionarUsuario);
-  }
-});
+// Ativa todos os eventos da interface: carrossel, sacola, busca, etc.
+inicializarEventos(containersPorCategoria);

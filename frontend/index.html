@@ -14,15 +14,14 @@
             <a href="index.html"> 
                 <img src="assets/image 6.png" alt="Logo do Coco Bambu"> 
             </a>
-            <form action="#" method="get">
-                <input type="text" name="busca" placeholder="Buscar por nome...">
+            <form action="Busca" method="get">
+                <input type="text" name="busca" placeholder="Buscar...">
                 <button type="submit">Buscar</button>
             </form>
 
             <div>
                 <a href="#"><i class="fas fa-bell"></i><span class="notification-badge"></span></a> 
                 <a href="./src/pages/login/index.html"><i class="fas fa-user-circle"></i></a>
-                <span id="userName" style="margin-left: 10px; color: #fff; font-weight: bold;"></span>
             </div>
         </nav>
     </header>
@@ -52,9 +51,11 @@
     </div>
 
     <div class="classification-highlight">
-        <div id="categorias"></div>
-        <div id="pratos"></div>
-        <button id="botao-usuario">👤</button>
+        <a href="#destaques-content" class="category-block">EM DESTAQUES</a>
+        <a href="#executivos-content" class="category-block">EXECUTIVOS</a>
+        <a href="#massas-content" class="category-block">MASSAS</a>
+        <a href="#sobremesas-content" class="category-block">SOBREMESAS</a>
+        <a href="#bebidas-content" class="category-block">BEBIDAS</a>
     </div>
 
     <main>
@@ -140,6 +141,13 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script> 
+    <script src="js/config.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dom.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 </html>

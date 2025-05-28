@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const userEmailInput = document.getElementById('user-email');
   const userCpfInput = document.getElementById('user-cpf');
   const userTypeInput = document.getElementById('user-type');
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
   let editingUserId = localStorage.getItem('editingUserId');
 
   // Redirecionar para a página de login ao clicar no botão "Adicionar Usuário"
@@ -27,6 +29,30 @@ document.addEventListener('DOMContentLoaded', () => {
       alert(error.message);
     }
   };
+
+  // Função para buscar usuários pelo nome
+  const searchUsersByName = async (name) => {
+    try {
+      const response = await fetch(`https://food-explorer-687u.onrender.com/usuarios/buscar/nome=${name}`, {
+        method: 'GET',
+      });
+      if (!response.ok) throw new Error('Erro ao buscar usuário pelo nome.');
+      const users = await response.json();
+      renderUsers(users); // Renderiza os usuários encontrados
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // Adicionar evento ao botão de busca
+  searchButton.addEventListener('click', () => {
+    const name = searchInput.value.trim();
+    if (name) {
+      searchUsersByName(name);
+    } else {
+      alert('Por favor, insira um nome para buscar.');
+    }
+  });
 
   // Render users in the table
   const renderUsers = (users) => {

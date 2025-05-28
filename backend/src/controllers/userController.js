@@ -56,6 +56,27 @@ exports.searchCPF = async (req, res) => {
   }
 };
 
+// GET /usuarios?nome=John
+exports.searchByName = async (req, res) => {
+  try {
+    const { nome } = req.query;
+
+    if (!nome) {
+      return res.status(400).json({ erro: 'O nome é obrigatório para a busca.' });
+    }
+
+    // Busca usuários cujo nome contém o valor fornecido (case-insensitive)
+    const usuarios = await Usuario.find({ nome: { $regex: nome, $options: 'i' } }, '-senha');
+    if (usuarios.length === 0) {
+      return res.status(404).json({ erro: 'Nenhum usuário encontrado com este nome.' });
+    }
+
+    res.json(usuarios);
+  } catch (e) {
+    res.status(500).json({ erro: e.message });
+  }
+};
+
 // POST /usuarios
 exports.criar = async (req, res) => {
   try {

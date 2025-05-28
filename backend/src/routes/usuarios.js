@@ -4,6 +4,7 @@ const ctrl    = require('../controllers/userController');
 
 router.get('/',       ctrl.listar);
 router.get('/buscar',    ctrl.searchCPF);
+router.get('/buscar/nome', ctrl.searchByName);
 router.get('/:id',    ctrl.detalhar);
 router.post('/',      ctrl.criar);
 router.put('/:id',    ctrl.atualizar);

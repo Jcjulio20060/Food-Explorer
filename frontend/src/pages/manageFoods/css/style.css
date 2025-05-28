@@ -60,6 +60,37 @@ h1 {
   color: var(--white);
 }
 
+/* Estilo para a barra de busca */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.search-container button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--gold);
+  color: var(--dark-brown);
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.search-container button:hover {
+  background-color: var(--leaf-green);
+  color: var(--white);
+}
+
 /* Ajuste para a tabela */
 .food-table {
   width: 100%;
